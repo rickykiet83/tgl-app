@@ -17,12 +17,16 @@ import { fuseConfig } from 'app/fuse-config';
 
 const appRoutes: Routes = [
     {
-        path: 'home',
+        path: '',
         loadChildren: () => import('./main/home/home.module').then(m => m.HomeModule)
     },
     {
+        path: 'my-jobs',
+        loadChildren: () => import('./main/my-job/my-job.module').then(m => m.MyJobModule)
+    },
+    {
         path: '**',
-        redirectTo: 'home'
+        redirectTo: ''
     }
 ];
 

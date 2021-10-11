@@ -1,11 +1,11 @@
-import { CommonModule } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
+
 import { FuseSharedModule } from '@fuse/shared.module';
 import { HomeComponent } from './home.component';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
-const routes = [
+const routes: Routes = [
     {
         path: '',
         component: HomeComponent
