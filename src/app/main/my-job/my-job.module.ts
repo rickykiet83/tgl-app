@@ -1,5 +1,6 @@
 import { RouterModule, Routes } from '@angular/router';
 
+import { CompanyListComponent } from './components/company-list/company-list.component';
 import { FuseSharedModule } from '@fuse/shared.module';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -9,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatRippleModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MyJobComponent } from './my-job.component';
@@ -23,7 +25,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    declarations: [MyJobComponent],
+    declarations: [MyJobComponent, CompanyListComponent],
     imports: [
         RouterModule.forChild(routes),
 
@@ -37,6 +39,7 @@ const routes: Routes = [
         MatRippleModule,
         MatTableModule,
         MatToolbarModule,
+        MatSelectModule,
 
         TranslateModule,
 

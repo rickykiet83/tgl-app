@@ -1,0 +1,7 @@
+<mat-form-field floatLabel="never">
+    <mat-select [ngModel]="selectedCompany" class="account-selection" placeholder="Company selection">
+        <mat-option *ngFor="let company of (companies | keys)" [value]="company.key">
+            {{company.value}}
+        </mat-option>
+    </mat-select>
+</mat-form-field>
