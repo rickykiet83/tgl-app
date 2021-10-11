@@ -2,19 +2,19 @@ import { FuseNavigation } from '@fuse/types';
 
 export const navigation: FuseNavigation[] = [
     {
-        id: 'applications',
-        title: 'Applications',
-        translate: 'NAV.APPLICATIONS',
-        type: 'group',
-        children: [
-            {
-                id: 'home',
-                title: 'Home',
-                translate: 'NAV.HOME.TITLE',
-                type: 'item',
-                icon: 'home',
-                url: '/home',
-            },
-        ]
+        id: 'my_jobs',
+        title: 'My Jobs',
+        translate: 'NAV.MY_JOBS',
+        type: 'item',
+        url: '/home',
+        exactMatch: true
+    },
+    {
+        id: 'my_quotes',
+        title: 'My Quotes',
+        translate: 'NAV.MY_QUOTES',
+        type: 'item',
+        url: '/',
+        exactMatch: true
     }
 ];
