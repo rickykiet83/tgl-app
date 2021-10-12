@@ -1,6 +1,9 @@
 @import "src/@fuse/scss/fuse";
 
 #contacts {
+    .border {
+        border-top: 0.01rem solid #fff;
+    }
 
     .header {
 
@@ -27,6 +30,9 @@
                     outline: none;
                 }
             }
+        }
+        .filters {
+            border-top: .5px solid #fff !important;
         }
     }
 

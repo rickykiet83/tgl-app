@@ -1,1 +1,8 @@
-<p>departure-date-filter works!</p>
+<mat-form-field floatLabel="fill">
+    <mat-label>Departure Date</mat-label>
+    <mat-select [ngModel]="selectedFilter" class="account-selection" placeholder="Filter selection">
+        <mat-option *ngFor="let filter of (filters | keys)" [value]="filter.key">
+            {{filter.value}}
+        </mat-option>
+    </mat-select>
+</mat-form-field>
