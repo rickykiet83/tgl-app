@@ -1,9 +1,10 @@
 <mat-card>
-    <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="16px">
+    <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="space-between start" fxLayoutGap="16px">
         <!-- Job Detail -->
-        <div fxFlex="50" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="8px">
+        <div fxFlex="50" fxFlex.lt-md="100" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start center"
+            fxLayoutGap="8px">
             <div fxFlex="10">
-                <mat-icon>home</mat-icon>
+                <img class="job-img" src="/assets/icons/jobs/u134.png" alt="home">
             </div>
             <div fxFlex>
                 <p class="mat-title"><span class="underline mr-12">TGL-2002450</span> SamaRang to Melbourne</p>
@@ -29,12 +30,33 @@
             </div>
         </div>
         <!-- Shipping Status -->
-        <div fxFlex>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam porro inventore quaerat animi amet
-            blanditiis sit dolor modi delectus reprehenderit est, atque quae, consectetur praesentium aut eos incidunt
-            distinctio impedit.
+        <div class="shipping-status" fxFlex="50" fxLayout="row" fxLayoutAlign="space-between start" fxLayoutGap="12px">
+            <div fxLayout="column" fxLayoutAlign="space-between center">
+                <div>
+                    <img class="job-img" src="/assets/icons/jobs/u133.png" alt="home">
+                </div>
+                <div class="text-bold">
+                    <p>Registered</p>
+                    <p>01-08-2021</p>
+                </div>
+            </div>
+            <div fxLayout="column" fxLayoutAlign="space-between center">
+                <img class="job-img" src="/assets/icons/jobs/u134.png" alt="home">
+                <div class="text-bold">
+                    <p>Semarang</p>
+                    <p>01-08-2021</p>
+                </div>
+            </div>
+            <div fxLayout="column" fxLayoutAlign="space-between center">
+                <img class="job-img" src="/assets/icons/jobs/u135.png" alt="home">
+                <div class="text-bold">
+                    <p>Melbourne</p>
+                    <p>01-08-2021</p>
+                </div>
+            </div>
+            <div fxLayout="column" fxLayoutAlign="space-between center">
+                <img class="job-img" src="/assets/icons/jobs/u145.png" alt="home">
+            </div>
         </div>
-
     </div>
-
 </mat-card>
