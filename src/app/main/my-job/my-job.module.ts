@@ -16,6 +16,13 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MyJobComponent } from './my-job.component';
 import { NgModule } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
+import { FiltersComponent } from './components/filters/filters.component';
+import { ModeFilterComponent } from './components/filters/mode-filter/mode-filter.component';
+import { StatusFilterComponent } from './components/filters/status-filter/status-filter.component';
+import { DepartureDateFilterComponent } from './components/filters/departure-date-filter/departure-date-filter.component';
+import { ArrivalDateFilterComponent } from './components/filters/arrival-date-filter/arrival-date-filter.component';
+import { PortFilterComponent } from './components/filters/port-filter/port-filter.component';
+import { SortbyFilterComponent } from './components/filters/sortby-filter/sortby-filter.component';
 
 const routes: Routes = [
     {
@@ -25,7 +32,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    declarations: [MyJobComponent, CompanyListComponent],
+    declarations: [MyJobComponent, CompanyListComponent, FiltersComponent, ModeFilterComponent, StatusFilterComponent, DepartureDateFilterComponent, ArrivalDateFilterComponent, PortFilterComponent, SortbyFilterComponent],
     imports: [
         RouterModule.forChild(routes),
 
