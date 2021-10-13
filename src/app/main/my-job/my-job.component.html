@@ -44,11 +44,13 @@
 
     <!-- CONTENT -->
     <div class="content">
-        <div class="center p-24 pb-56" fusePerfectScrollbar>
+        <div class="center p-24 pb-56">
 
             <!-- CONTENT -->
             <div class="content">
-                <app-job-item></app-job-item>
+                <ng-container *ngFor="let item of (jobItems | keys)">
+                    <app-job-item></app-job-item>
+                </ng-container>
             </div>
             <!-- / CONTENT -->
 

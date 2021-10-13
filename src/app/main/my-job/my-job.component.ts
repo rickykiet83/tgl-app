@@ -13,6 +13,12 @@ import { fuseAnimations } from '@fuse/animations';
 export class MyJobComponent implements OnInit {
 
     searchInput: FormControl;
+    jobItems: any[] = [
+        { id: 1 },
+        { id: 2 },
+        { id: 3 },
+        { id: 4 },
+    ];
 
     constructor() {
         // Set the defaults
