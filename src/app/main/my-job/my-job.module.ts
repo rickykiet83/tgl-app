@@ -2,6 +2,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { ArrivalDateFilterComponent } from './components/filters/arrival-date-filter/arrival-date-filter.component';
 import { CompanyListComponent } from './components/company-list/company-list.component';
+import { CompanyService } from './services/company.service';
 import { DepartureDateFilterComponent } from './components/filters/departure-date-filter/departure-date-filter.component';
 import { FiltersComponent } from './components/filters/filters.component';
 import { FuseSharedModule } from '@fuse/shared.module';
@@ -54,6 +55,9 @@ const routes: Routes = [
         TranslateModule,
 
         FuseSharedModule
+    ],
+    providers: [
+        CompanyService
     ]
 })
 export class MyJobModule { }

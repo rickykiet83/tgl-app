@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 import { CompanyModel } from './../../../../shared/models/company.model';
+import { CompanyService } from '../../services/company.service';
+import { HttpClient } from '@angular/common/http';
+import { ICompany } from './../../../../shared/interfaces/company.interface';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Component({
     selector: 'app-company-list',
@@ -10,16 +14,16 @@ import { CompanyModel } from './../../../../shared/models/company.model';
 export class CompanyListComponent implements OnInit {
     companies: CompanyModel[] = [];
     selectedCompany: CompanyModel;
-    constructor() {
-        // Set the defaults
-        this.companies.push(
-            new CompanyModel('NickScali Furniture'),
-            new CompanyModel('Advanced Furniture'),
-            new CompanyModel('Bed & Dream'),
-        );
+    constructor(private companyService: CompanyService) {
+    }
+
+    async ngOnInit() {
+        this.companies = await this.getCompanies();
         this.selectedCompany = this.companies[0];
     }
 
-    ngOnInit(): void { }
+    async getCompanies() {
+        return this.companyService.getCompanies();
+    }
 
 }
