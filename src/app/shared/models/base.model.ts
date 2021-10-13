@@ -1,6 +1,8 @@
 import * as shortId from 'shortid';
 
-export abstract class BaseModel<T> {
+import { IBaseModel } from '../interfaces/base.interface';
+
+export abstract class BaseModel<T> implements IBaseModel<T> {
     constructor(protected _id?: T) {
         this._id = _id;
     }

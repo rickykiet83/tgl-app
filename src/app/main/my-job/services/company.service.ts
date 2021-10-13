@@ -1,12 +1,10 @@
-import { CompanyModel } from './../../../shared/models/company.model';
 import { HttpClient } from '@angular/common/http';
 import { ICompany } from './../../../shared/interfaces/company.interface';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/internal/operators/map';
 
 @Injectable()
 export class CompanyService {
-    companies: CompanyModel[] = [];
+    companies: ICompany[] = [];
     constructor(
         private _httpClient: HttpClient
     ) { }
@@ -14,13 +12,11 @@ export class CompanyService {
     /**
     * Get companies
     *
-    * @returns {Promise<CompanyModel[]>}
+    * @returns {Promise<ICompany[]>}
     */
-    getCompanies(): Promise<CompanyModel[]> {
+    getCompanies(): Promise<ICompany[]> {
         return new Promise((resolve, reject) => {
-            this._httpClient.get<ICompany[]>('api/companies').pipe(
-                map(response => response.map(company => new CompanyModel(company.id, company.name)))
-            )
+            this._httpClient.get<ICompany[]>('api/companies')
                 .subscribe((response) => {
                     this.companies = response;
                     resolve(response);
