@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+
+import { IPackages } from './../../../../shared/interfaces/package.interface';
 
 @Component({
     selector: 'app-job-item',
@@ -6,10 +8,11 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./job-item.component.scss']
 })
 export class JobItemComponent implements OnInit {
-
+    @Input() item: IPackages;
     constructor() { }
 
     ngOnInit(): void {
+
     }
 
 }

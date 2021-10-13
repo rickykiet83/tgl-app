@@ -7,24 +7,23 @@
                 <img class="job-img" src="/assets/icons/jobs/u134.png" alt="home">
             </div>
             <div fxFlex>
-                <p class="mat-title"><span class="underline mr-12">TGL-2002450</span> SamaRang to Melbourne</p>
-                <div class="mt-12 job-detail" fxLayout="row" fxLayoutAlign="start start">
+                <p class="mat-title"><span class="underline mr-12 text-uppercase">{{item?.id}}</span>
+                    {{item?.name}}
+                </p>
+                <div class="mt-12 job-detail" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="8px">
                     <div fxFlex="20">
                         <p class="mat-subheading-1"><strong>Cust Ref.</strong></p>
-                        <p>86840</p>
-                        <p>25350</p>
-                        <p>...</p>
+                        <p class="text-uppercase" *ngFor="let cr of item?.customerRef">{{cr}}</p>
                     </div>
                     <div fxFlex="30">
                         <p class="mat-subheading-1"><strong>Containers</strong></p>
-                        <p class="text-uppercase">PCIU9344080</p>
-                        <p class="text-uppercase">CSLU1877403</p>
-                        <p>...</p>
+                        <p class="text-uppercase" *ngFor="let cr of item?.containers">{{cr}}</p>
+
                     </div>
                     <div fxFlex>
 
                         <p class="mat-subheading-1"><strong>Supplier</strong></p>
-                        <p class="text-uppercase">MEILLER AUFZUGTUREN GMBH</p>
+                        <p class="text-uppercase">{{item.supplier}}</p>
                     </div>
                 </div>
             </div>

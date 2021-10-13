@@ -49,7 +49,7 @@
             <!-- CONTENT -->
             <div class="content">
                 <ng-container *ngFor="let item of packages">
-                    <app-job-item></app-job-item>
+                    <app-job-item [item]="item"></app-job-item>
                 </ng-container>
             </div>
             <!-- / CONTENT -->
