@@ -5,7 +5,8 @@ export class FakeDbService implements InMemoryDbService {
     createDb(): any {
         return {
             // Company
-            'companies': CompanyFakeDb.companies
+            'companies': CompanyFakeDb.companies,
+            'packages': CompanyFakeDb.packages,
         }
     }
 }

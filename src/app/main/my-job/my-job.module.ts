@@ -22,6 +22,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { ModeFilterComponent } from './components/filters/mode-filter/mode-filter.component';
 import { MyJobComponent } from './my-job.component';
 import { NgModule } from '@angular/core';
+import { PackageService } from './services/package.service';
 import { PortFilterComponent } from './components/filters/port-filter/port-filter.component';
 import { SortbyFilterComponent } from './components/filters/sortby-filter/sortby-filter.component';
 import { StatusFilterComponent } from './components/filters/status-filter/status-filter.component';
@@ -30,7 +31,10 @@ import { TranslateModule } from '@ngx-translate/core';
 const routes: Routes = [
     {
         path: '',
-        component: MyJobComponent
+        component: MyJobComponent,
+        // resolve: {
+        //     packages: PackageService
+        // }
     }
 ];
 
@@ -57,7 +61,8 @@ const routes: Routes = [
         FuseSharedModule
     ],
     providers: [
-        CompanyService
+        CompanyService,
+        PackageService
     ]
 })
 export class MyJobModule { }
