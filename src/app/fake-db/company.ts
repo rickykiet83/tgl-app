@@ -69,7 +69,7 @@ export class CompanyFakeDb {
             destinationPort: 'Melbourne',
             route: [
                 {
-                    packageId: '',
+                    packageId: shortId.generate(),
                     departureDate: addDays(new Date(), 2),
                     arrivalDate: addDays(new Date(), 4),
                     id: shortId.generate(),
@@ -77,7 +77,7 @@ export class CompanyFakeDb {
                     transitPort: 'NingBo',
                 },
                 {
-                    packageId: '',
+                    packageId: shortId.generate(),
                     departureDate: addDays(new Date(), 4),
                     arrivalDate: addDays(new Date(), 8),
                     id: shortId.generate(),
@@ -85,7 +85,7 @@ export class CompanyFakeDb {
                     transitPort: 'Singapore',
                 },
                 {
-                    packageId: '',
+                    packageId: shortId.generate(),
                     departureDate: endOfMonth(new Date()),
                     arrivalDate: endOfMonth(new Date()),
                     id: shortId.generate(),
@@ -109,7 +109,7 @@ export class CompanyFakeDb {
             destinationPort: 'Melbourne',
             route: [
                 {
-                    packageId: '',
+                    packageId: shortId.generate(),
                     departureDate: startOfDay(new Date()),
                     arrivalDate: addDays(new Date(), 1),
                     id: shortId.generate(),
@@ -117,7 +117,7 @@ export class CompanyFakeDb {
                     transitPort: 'Samarang',
                 },
                 {
-                    packageId: '',
+                    packageId: shortId.generate(),
                     departureDate: addDays(new Date(), 1),
                     arrivalDate: addDays(new Date(), 1),
                     id: shortId.generate(),

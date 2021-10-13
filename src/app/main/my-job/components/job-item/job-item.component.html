@@ -1,7 +1,7 @@
 <mat-card class="mb-16">
     <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="space-between start" fxLayoutGap="16px">
         <!-- Job Detail -->
-        <div fxFlex="50" fxFlex.lt-md="100" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start center"
+        <div fxFlex="60" fxFlex.lt-md="100" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start center"
             fxLayoutGap="8px">
             <div fxFlex="10">
                 <img class="job-img" src="/assets/icons/jobs/u134.png" alt="home">
@@ -10,7 +10,7 @@
                 <p class="mat-title"><span class="underline mr-12 text-uppercase">{{item?.id}}</span>
                     {{item?.name}}
                 </p>
-                <div class="mt-12 job-detail" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="8px">
+                <div class="mt-12 job-detail" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="12px">
                     <div fxFlex="20">
                         <p class="mat-subheading-1"><strong>Cust Ref.</strong></p>
                         <p class="text-uppercase" *ngFor="let cr of item?.customerRef">{{cr}}</p>
@@ -18,10 +18,8 @@
                     <div fxFlex="30">
                         <p class="mat-subheading-1"><strong>Containers</strong></p>
                         <p class="text-uppercase" *ngFor="let cr of item?.containers">{{cr}}</p>
-
                     </div>
                     <div fxFlex>
-
                         <p class="mat-subheading-1"><strong>Supplier</strong></p>
                         <p class="text-uppercase">{{item.supplier}}</p>
                     </div>
@@ -29,8 +27,8 @@
             </div>
         </div>
         <!-- Shipping Status -->
-        <div class="shipping-status separator" fxFlex="50" fxLayout="row" fxLayout.lt-sm="column"
-            fxLayoutAlign="start start" fxLayoutGap="10px">
+        <div class="shipping-status separator" fxFlex fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="start start"
+            fxLayoutGap="10px">
             <div fxLayout="column" fxLayoutAlign="space-between center">
                 <div>
                     <img class="job-img" src="/assets/icons/jobs/u133.png" alt="home">
