@@ -1,4 +1,4 @@
-import { IPackages } from './job.interface';
+import { IPackages } from "./package.interface";
 
 export interface ICompany {
     id: string,
