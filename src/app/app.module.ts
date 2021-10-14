@@ -2,6 +2,7 @@ import { FuseProgressBarModule, FuseSidebarModule, FuseThemeOptionsModule } from
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { AuthEffects } from './../store/effects/auth.effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { CompanyEffects } from './../store/effects/company.effects';
@@ -60,6 +61,7 @@ const appRoutes: Routes = [
         EffectsModule.forRoot([
             CompanyEffects,
             PackageEffects,
+            AuthEffects,
         ]),
         StoreRouterConnectingModule.forRoot({ stateKey: 'router' }),
         !environment.production ? StoreDevtoolsModule.instrument() : [],

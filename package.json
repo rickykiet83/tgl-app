@@ -31,6 +31,7 @@
         "@angular/platform-browser": "11.0.0",
         "@angular/platform-browser-dynamic": "11.0.0",
         "@angular/router": "11.0.0",
+        "@auth0/angular-jwt": "^5.0.2",
         "@azure/msal-angular": "^2.0.4",
         "@azure/msal-browser": "^2.18.0",
         "@ngrx/effects": "8.6.0",

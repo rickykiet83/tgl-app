@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
 import { IAppState } from 'store/state';
+import { LoginWithToken } from './../../../store/actions/auth.actions';
 import { Store } from '@ngrx/store';
 import { map } from 'rxjs/internal/operators';
 
@@ -33,9 +34,9 @@ export class HomeComponent implements OnInit {
                 //     this.store.dispatch(new ActionLogin());
                 // }
                 console.log(res);
-                // if (res.access_token) {
-                //     this.store.dispatch(new ActionAuthLoginWithToken(res.access_token));
-                // }
+                if (res.id_token) {
+                    this.store.dispatch(new LoginWithToken(res.id_token));
+                }
             });
     }
 

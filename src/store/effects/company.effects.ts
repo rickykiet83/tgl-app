@@ -12,24 +12,24 @@ import { selectCompanyList } from './../selectors/company.selectors';
 @Injectable()
 export class CompanyEffects {
     constructor(
-        private _actions$: Actions,
-        private _store: Store<IAppState>,
+        private actions$: Actions,
+        private store: Store<IAppState>,
         private companyService: CompanyService,
     ) {
 
     }
     @Effect()
-    getCompanies$ = this._actions$.pipe(
+    getCompanies$ = this.actions$.pipe(
         ofType<GetCompanies>(ECompanyActions.GetCompanies),
         switchMap(() => this.companyService.getCompanies()),
         switchMap((companies) => of(new GetCompaniesSuccess(companies)))
     );
 
     @Effect()
-    getCompany$ = this._actions$.pipe(
+    getCompany$ = this.actions$.pipe(
         ofType<GetCompany>(ECompanyActions.GetCompany),
         map(action => this.companyService.getCompany(action.payload)),
-        withLatestFrom(this._store.pipe(select(selectCompanyList))),
+        withLatestFrom(this.store.pipe(select(selectCompanyList))),
         switchMap(([company]) => {
             return of(new GetCompanySuccess(company));
         })

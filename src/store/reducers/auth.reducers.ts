@@ -15,6 +15,7 @@ export const authReducers = (
         case EAuthActions.LoginWithTokenSuccess: {
             return {
                 ...state,
+                token: null,
                 authenticatedUser: action.payload
             };
         }
