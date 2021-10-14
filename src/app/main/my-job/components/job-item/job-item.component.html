@@ -1,7 +1,7 @@
 <mat-card class="mb-16">
     <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="space-between start" fxLayoutGap="16px">
         <!-- Job Detail -->
-        <div fxFlex="55" fxFlex.lt-md="100" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start center"
+        <div fxFlex="45" fxFlex.lt-md="100" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start center"
             fxLayoutGap="8px">
             <div fxFlex="10">
                 <img class="job-img" [src]="item?.Mode?.icon" alt="home">
@@ -27,36 +27,35 @@
             </div>
         </div>
         <!-- Shipping Status -->
-        <div class="shipping-status separator" fxFlex fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="start start"
+        <div class="shipping-status separator" fxFlex fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start start"
             fxLayoutGap="10px">
-            <div fxLayout="column" fxLayoutAlign="space-between center">
+            <div fxLayout="column" fxFlex="grow" fxLayoutAlign="space-between center">
                 <div>
-                    <img class="job-img" src="/assets/icons/jobs/u134.png" alt=" home">
+                    <img class="job-img" [src]="item?.originIcon" alt="home">
                 </div>
                 <div class="text-bold">
-                    <p>Registered</p>
-                    <p>01-08-2021</p>
+                    <p>{{item?.originPort}}</p>
+                    <p>{{item?.orderDateLocale}}</p>
                 </div>
             </div>
             <div class="line"></div>
-            <div fxLayout="column" fxLayoutAlign="space-between center">
-                <img class="job-img" src="/assets/icons/jobs/u134.png" alt="home">
-                <div class="text-bold">
-                    <p>Semarang</p>
-                    <p>01-08-2021</p>
+
+            <ng-container *ngFor="let route of item?.Routes">
+
+                <div fxFlex="grow" fxLayout="column" fxLayoutAlign="space-between center">
+                    <div>
+                        <img class="job-img" [src]="route.icon" alt=" home">
+                    </div>
+                    <div class="text-bold">
+                        <p>{{route.transitPort}}</p>
+                        <p>{{route.arrivalDateLocale}}</p>
+                    </div>
                 </div>
-            </div>
-            <div class="line"></div>
-            <div fxLayout="column" fxLayoutAlign="space-between center">
-                <img class="job-img" src="/assets/icons/jobs/u135.png" alt="home">
-                <div class="text-bold">
-                    <p>Melbourne</p>
-                    <p>01-08-2021</p>
-                </div>
-            </div>
-            <div class="line"></div>
-            <div fxLayout="column" fxLayoutAlign="space-between center">
-                <img class="job-img" src="/assets/icons/jobs/u145.png" alt="home">
+                <div class="line"></div>
+            </ng-container>
+
+            <div fxFlex="grow" fxLayout="column" fxLayoutAlign="space-between center">
+                <img class="job-img" [src]="item?.completedIcon" alt="home">
             </div>
         </div>
     </div>

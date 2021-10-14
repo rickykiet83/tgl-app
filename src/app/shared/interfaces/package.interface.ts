@@ -11,7 +11,7 @@ export interface IPackage extends IBaseModel<string> {
     orderDate: Date,
     arrivalDate: Date,
     status: StatusTypes;
-    route: IRoute[],
+    routes: IRoute[],
     originPort?: PortTypes,
     destinationPort: PortTypes,
     customerRef: string[];

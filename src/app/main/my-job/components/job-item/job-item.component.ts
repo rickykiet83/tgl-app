@@ -8,7 +8,7 @@ import { PackageModel } from './../../../../shared/models/package.model';
     styleUrls: ['./job-item.component.scss']
 })
 export class JobItemComponent implements OnInit {
-    @Input() item: PackageModel = new PackageModel();
+    @Input() item: PackageModel;
     constructor() { }
 
     ngOnInit(): void { }

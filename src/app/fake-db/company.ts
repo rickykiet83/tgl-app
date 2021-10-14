@@ -30,12 +30,12 @@ export class CompanyFakeDb {
             customerRef: [shortId.generate().toUpperCase(), shortId.generate().toUpperCase()],
             supplier: 'MEILLER AUFZUGTUREN GMBH',
             mode: 'Air',
-            status: 'At Origin (Job Added)',
+            status: 'Completed',
             orderDate: startOfDay(new Date()),
             originPort: 'Registered',
             arrivalDate: endOfMonth(new Date()),
             destinationPort: 'Melbourne',
-            route: [
+            routes: [
                 {
                     packageId: '',
                     departureDate: addDays(new Date(), 2),
@@ -43,6 +43,7 @@ export class CompanyFakeDb {
                     id: shortId.generate(),
                     originPort: 'Registered',
                     transitPort: 'Samarang',
+                    mode: 'Air',
                 },
                 {
                     packageId: '',
@@ -51,6 +52,7 @@ export class CompanyFakeDb {
                     id: shortId.generate(),
                     originPort: 'Samarang',
                     transitPort: 'Melbourne',
+                    mode: 'Air',
                 },
             ]
         },
@@ -67,7 +69,7 @@ export class CompanyFakeDb {
             originPort: 'Registered',
             arrivalDate: endOfMonth(new Date()),
             destinationPort: 'Melbourne',
-            route: [
+            routes: [
                 {
                     packageId: shortId.generate(),
                     departureDate: addDays(new Date(), 2),
@@ -75,6 +77,7 @@ export class CompanyFakeDb {
                     id: shortId.generate(),
                     originPort: 'Registered',
                     transitPort: 'NingBo',
+                    mode: 'Sea',
                 },
                 {
                     packageId: shortId.generate(),
@@ -83,6 +86,7 @@ export class CompanyFakeDb {
                     id: shortId.generate(),
                     originPort: 'NingBo',
                     transitPort: 'Singapore',
+                    mode: 'Sea',
                 },
                 {
                     packageId: shortId.generate(),
@@ -91,6 +95,7 @@ export class CompanyFakeDb {
                     id: shortId.generate(),
                     originPort: 'Singapore',
                     transitPort: 'Melbourne',
+                    mode: 'Sea',
                 },
             ]
         },
@@ -107,7 +112,7 @@ export class CompanyFakeDb {
             originPort: 'Registered',
             arrivalDate: addDays(new Date(), 1),
             destinationPort: 'Melbourne',
-            route: [
+            routes: [
                 {
                     packageId: shortId.generate(),
                     departureDate: startOfDay(new Date()),
@@ -115,14 +120,16 @@ export class CompanyFakeDb {
                     id: shortId.generate(),
                     originPort: 'Registered',
                     transitPort: 'Samarang',
+                    mode: 'Transport',
                 },
                 {
                     packageId: shortId.generate(),
                     departureDate: addDays(new Date(), 1),
-                    arrivalDate: addDays(new Date(), 1),
+                    arrivalDate: addDays(new Date(), 5),
                     id: shortId.generate(),
                     originPort: 'Samarang',
                     transitPort: 'Melbourne',
+                    mode: 'Transport',
                 },
             ]
         },

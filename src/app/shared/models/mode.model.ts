@@ -22,7 +22,7 @@ export class ModeModel extends NumberBaseModel implements IMode {
                 return '/assets/icons/jobs/rail.png';
 
             default:
-                return '/assets/icons/jobs/133.png';
+                return '/assets/icons/jobs/u133.png';
         }
     }
 }

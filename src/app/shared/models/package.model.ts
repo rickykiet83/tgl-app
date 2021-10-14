@@ -3,6 +3,7 @@ import { IRoute } from '../interfaces/route.interface';
 import { ModeModel } from './mode.model';
 import { ModeTypes } from '../types/mode.type';
 import { PortTypes } from '../types/port.type';
+import { RouteModel } from './route.model';
 import { StatusTypes } from '../types/status.type';
 import { StringBaseModel } from './base.model';
 
@@ -13,7 +14,7 @@ export class PackageModel extends StringBaseModel implements IPackage {
     orderDate: Date;
     arrivalDate: Date;
     status: StatusTypes;
-    route: IRoute[];
+    routes: IRoute[];
     originPort?: PortTypes;
     destinationPort: PortTypes;
     customerRef: string[];
@@ -29,7 +30,7 @@ export class PackageModel extends StringBaseModel implements IPackage {
         this.orderDate = new Date(data.orderDate);
         this.arrivalDate = new Date(data.arrivalDate);
         this.status = data.status || 'At Origin (Job Added)';
-        this.route = data.route || [];
+        this.routes = data.routes || [];
         this.originPort = data.originPort || 'Registered';
         this.destinationPort = data.destinationPort || 'Registered';
         this.customerRef = data.customerRef || [];
@@ -37,7 +38,27 @@ export class PackageModel extends StringBaseModel implements IPackage {
         this.supplier = data.supplier || ''
     }
 
+    get originIcon(): string {
+        return '/assets/icons/jobs/u133.png';
+    }
+
     get Mode(): ModeModel {
         return new ModeModel(this.mode);
+    }
+
+    get Routes(): RouteModel[] {
+        return this.routes.map(r => new RouteModel(r.id, this.id, r));
+    }
+
+    get orderDateLocale(): string {
+        return this.orderDate?.toLocaleDateString('en-AU');
+    }
+
+    get arrivalDateLocale(): string {
+        return this.arrivalDate?.toLocaleDateString('en-AU');
+    }
+
+    get completedIcon(): string {
+        return this.status === 'Completed' ? '/assets/icons/jobs/u143.png' : '/assets/icons/jobs/u145.png';
     }
 }
