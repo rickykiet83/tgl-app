@@ -1,5 +1,5 @@
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { EPackageActions, FilterPackages, FilteredPackages, GetPackages, GetPackagesSuccess, PackagesSorted, SortPackages } from './../actions/package.actions';
+import { EPackageActions, FilterPackages, GetPackages, GetPackagesSuccess, SortPackages } from './../actions/package.actions';
 import { map, switchMap } from 'rxjs/internal/operators';
 
 import { IAppState } from './../state/app.state';
@@ -29,7 +29,7 @@ export class PackageEffects {
         ofType<FilterPackages>(EPackageActions.FilterPackages),
         map(action => action.payload),
         map((filter) => this.packageService.filterPackage(filter)),
-        switchMap((packages) => of(new FilteredPackages(packages)))
+        switchMap((packages) => of(new GetPackagesSuccess(packages)))
     )
 
     @Effect()
@@ -37,7 +37,7 @@ export class PackageEffects {
         ofType<SortPackages>(EPackageActions.SortPackages),
         map(action => action.payload),
         map((sort) => this.packageService.sortData(sort)),
-        switchMap((packages) => of(new PackagesSorted(packages)))
+        switchMap((packages) => of(new GetPackagesSuccess(packages)))
     )
 
 }

@@ -28,25 +28,11 @@ export const packageReducers = (
             };
         }
 
-        case EPackageActions.PackagesFiltered: {
-            return {
-                ...state,
-                packages: action.payload
-            };
-        }
-
         case EPackageActions.SortPackages: {
             return {
                 ...state,
                 sortBy: action.payload,
                 packages: [],
-            };
-        }
-
-        case EPackageActions.PackagesSorted: {
-            return {
-                ...state,
-                packages: action.payload
             };
         }
 
