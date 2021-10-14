@@ -19,6 +19,7 @@ export class GetCompaniesSuccess implements Action {
 
 export class GetCompany implements Action {
     public readonly type = ECompanyActions.GetCompany;
+    constructor(public payload: string) { }
 }
 
 export class GetCompanySuccess implements Action {

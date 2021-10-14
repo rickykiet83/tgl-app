@@ -25,4 +25,9 @@ export class CompanyService {
                 }, reject);
         });
     }
+
+    getCompany(id: string): ICompany {
+        const company = this.companies.find(c => c.id === id);
+        return company;
+    }
 }
