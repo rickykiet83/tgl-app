@@ -143,5 +143,43 @@ export class CompanyFakeDb {
                 },
             ]
         },
+
+        {
+            id: shortId.generate(),
+            companyId: 'advanced-furniture',
+            name: 'Samarang to Sydney',
+            containers: [shortId.generate().toUpperCase(), shortId.generate().toUpperCase()],
+            customerRef: [shortId.generate().toUpperCase(), shortId.generate().toUpperCase()],
+            supplier: 'MEILLER AUFZUGTUREN GMBH',
+            mode: 'Sea',
+            status: 'Completed',
+            departureDate: startOfDay(new Date()),
+            originPort: 'Samarang',
+            transitPort: 'Ho Chi Minh',
+            arrivalDate: addDays(new Date(), 7),
+            destinationPort: 'Sydney',
+            routes: [
+                {
+                    packageId: '',
+                    departureDate: addDays(new Date(), 2),
+                    arrivalDate: addDays(new Date(), 2),
+                    id: shortId.generate(),
+                    originPort: 'Samarang',
+                    transitPort: 'Ho Chi Minh',
+                    mode: 'Air',
+                    status: 'At Origin (Job Added)',
+                },
+                {
+                    packageId: '',
+                    departureDate: endOfMonth(new Date()),
+                    arrivalDate: addDays(new Date(), 7),
+                    id: shortId.generate(),
+                    originPort: 'Ho Chi Minh',
+                    transitPort: 'Sydney',
+                    mode: 'Air',
+                    status: 'Completed'
+                },
+            ]
+        },
     ];
 }
