@@ -17,17 +17,6 @@ export class PackageService {
         private _httpClient: HttpClient
     ) { }
 
-    // resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): IPackages[] | Observable<IPackages[]> | Promise<IPackages[]> {
-    //     this.routeParams = route.params;
-    //     return new Promise((resolve, reject) => {
-    //         Promise.all([
-    //             this.getPackages()
-    //         ]).then(([packages]) => {
-    //             resolve(packages);
-    //         })
-    //     })
-    // }
-
     /**
     * Get companies
     *
@@ -60,13 +49,20 @@ export class PackageService {
 
         if (!!filter.mode && filter.mode !== 'All')
             packages = packages.filter(p => p.mode === filter.mode.toString());
+        else if (!!filter.mode && filter.mode === 'All')
+            packages = packages.filter(p => p.mode !== filter.mode.toString());
 
         if (!!filter.status && filter.status !== 'All Active')
             packages = packages.filter(p => p.status === filter.status);
+        else if (!!filter.status && filter.status === 'All Active')
+            packages = packages.filter(p => p.status !== filter.status);
 
         if (!!filter.port && filter.port !== 'Registered')
             packages = packages.filter(p => p.originPort === filter.port ||
                 p.destinationPort === filter.port);
+        else if (!!filter.port && filter.port !== 'Registered')
+            packages = packages.filter(p => p.originPort !== filter.port ||
+                p.destinationPort !== filter.port);
 
 
         return packages;
