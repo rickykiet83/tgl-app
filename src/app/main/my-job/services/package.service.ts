@@ -69,7 +69,7 @@ export class PackageService {
     }
 
     sortData(sort: Partial<ISortPackage>): IPackage[] {
-        const packages = this.packages.sort((a, b) => {
+        return this.packages.sort((a, b) => {
             let propertyA: number | string | Date = '';
             let propertyB: number | string | Date = '';
 
@@ -102,7 +102,6 @@ export class PackageService {
 
             return (valueA < valueB ? - 1 : 1)
         });
-        return packages;
     }
 
     get Packages(): PackageModel[] {
