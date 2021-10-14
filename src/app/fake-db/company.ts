@@ -44,6 +44,7 @@ export class CompanyFakeDb {
                     originPort: 'Registered',
                     transitPort: 'Samarang',
                     mode: 'Air',
+                    status: 'At Origin (Job Added)',
                 },
                 {
                     packageId: '',
@@ -53,6 +54,7 @@ export class CompanyFakeDb {
                     originPort: 'Samarang',
                     transitPort: 'Melbourne',
                     mode: 'Air',
+                    status: 'Completed'
                 },
             ]
         },
@@ -78,6 +80,7 @@ export class CompanyFakeDb {
                     originPort: 'Registered',
                     transitPort: 'NingBo',
                     mode: 'Sea',
+                    status: 'At Transit Port',
                 },
                 {
                     packageId: shortId.generate(),
@@ -87,6 +90,7 @@ export class CompanyFakeDb {
                     originPort: 'NingBo',
                     transitPort: 'Singapore',
                     mode: 'Sea',
+                    status: 'At Transit Port',
                 },
                 {
                     packageId: shortId.generate(),
@@ -96,6 +100,7 @@ export class CompanyFakeDb {
                     originPort: 'Singapore',
                     transitPort: 'Melbourne',
                     mode: 'Sea',
+                    status: 'At Transit Port',
                 },
             ]
         },
@@ -121,6 +126,7 @@ export class CompanyFakeDb {
                     originPort: 'Registered',
                     transitPort: 'Samarang',
                     mode: 'Transport',
+                    status: 'At Transit Port',
                 },
                 {
                     packageId: shortId.generate(),
@@ -130,6 +136,7 @@ export class CompanyFakeDb {
                     originPort: 'Samarang',
                     transitPort: 'Melbourne',
                     mode: 'Transport',
+                    status: 'At final Destination',
                 },
             ]
         },
