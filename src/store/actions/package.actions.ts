@@ -1,4 +1,4 @@
-import { IFilterPackage, IPackage } from './../../app/shared/interfaces/package.interface';
+import { IFilterPackage, IPackage, ISortPackage } from './../../app/shared/interfaces/package.interface';
 
 import { Action } from '@ngrx/store';
 
@@ -7,6 +7,8 @@ export enum EPackageActions {
     GetPackagesSuccess = '[Package] Get Packages Success',
     FilterPackages = '[Package] Filter Package',
     PackagesFiltered = '[Package] Packages Filtered',
+    SortPackages = '[Package] Sort Packages',
+    PackagesSorted = '[Package] Packages Sorted',
 }
 
 export class GetPackages implements Action {
@@ -29,5 +31,15 @@ export class FilteredPackages implements Action {
     constructor(public payload: IPackage[]) { }
 }
 
+export class SortPackages implements Action {
+    public readonly type = EPackageActions.SortPackages;
+    constructor(public payload: Partial<ISortPackage>) { }
+}
 
-export type PackageActions = GetPackages | GetPackagesSuccess | FilterPackages | FilteredPackages;
+export class PackagesSorted implements Action {
+    public readonly type = EPackageActions.PackagesSorted;
+    constructor(public payload: IPackage[]) { }
+}
+
+export type PackageActions = GetPackages | GetPackagesSuccess | FilterPackages | FilteredPackages
+    | SortPackages | PackagesSorted;

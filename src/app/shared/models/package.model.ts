@@ -11,11 +11,12 @@ export class PackageModel extends StringBaseModel implements IPackage {
     companyId: string;
     name: string;
     mode: ModeTypes;
-    orderDate: Date;
+    departureDate: Date;
     arrivalDate: Date;
     status: StatusTypes;
     routes: IRoute[];
     originPort?: PortTypes;
+    transitPort: PortTypes;
     destinationPort: PortTypes;
     customerRef: string[];
     containers: string[];
@@ -27,7 +28,7 @@ export class PackageModel extends StringBaseModel implements IPackage {
         this.companyId = data.companyId || '';
         this.name = data.name || '';
         this.mode = data.mode || 'Air';
-        this.orderDate = new Date(data.orderDate);
+        this.departureDate = new Date(data.departureDate);
         this.arrivalDate = new Date(data.arrivalDate);
         this.status = data.status || 'At Origin (Job Added)';
         this.routes = data.routes || [];
@@ -50,8 +51,8 @@ export class PackageModel extends StringBaseModel implements IPackage {
         return this.routes.map(r => new RouteModel(r.id, this.id, r));
     }
 
-    get orderDateLocale(): string {
-        return this.orderDate?.toLocaleDateString('en-AU');
+    get departureDateLocale(): string {
+        return this.departureDate?.toLocaleDateString('en-AU');
     }
 
     get arrivalDateLocale(): string {

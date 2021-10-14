@@ -1,14 +1,15 @@
-import { IFilterPackage, IPackage } from './../../app/shared/interfaces/package.interface';
+import { IFilterPackage, IPackage, ISortPackage } from './../../app/shared/interfaces/package.interface';
 export interface IPackageState {
     packages: IPackage[];
     filter: Partial<IFilterPackage>;
+    sortBy: Partial<ISortPackage>;
 }
 
 export const initialPackageState: IPackageState = {
     packages: [],
-    filter: {
-        mode: 'All',
-        status: 'All Active'
+    filter: {},
+    sortBy: {
+        sortBy: 'Mode'
     }
 }
 

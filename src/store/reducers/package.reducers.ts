@@ -6,18 +6,25 @@ export const packageReducers = (
     action: PackageActions
 ): IPackageState => {
     switch (action.type) {
-        case
-            EPackageActions.GetPackagesSuccess: {
-                return {
-                    ...state,
-                    packages: action.payload
-                };
-            }
+        case EPackageActions.GetPackages: {
+            return {
+                ...state,
+                packages: [],
+            };
+        }
+
+        case EPackageActions.GetPackagesSuccess: {
+            return {
+                ...state,
+                packages: action.payload
+            };
+        }
 
         case EPackageActions.FilterPackages: {
             return {
                 ...state,
                 filter: action.payload,
+                packages: [],
             };
         }
 
@@ -28,6 +35,20 @@ export const packageReducers = (
             };
         }
 
+        case EPackageActions.SortPackages: {
+            return {
+                ...state,
+                sortBy: action.payload,
+                packages: [],
+            };
+        }
+
+        case EPackageActions.PackagesSorted: {
+            return {
+                ...state,
+                packages: action.payload
+            };
+        }
 
         default:
             return state;
