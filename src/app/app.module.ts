@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { AuthEffects } from './../store/effects/auth.effects';
+import { AuthGuard } from './shared/services/auth.guard';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { CompanyEffects } from './../store/effects/company.effects';
@@ -33,6 +34,8 @@ const appRoutes: Routes = [
     },
     {
         path: 'my-jobs',
+        // canActivate: [AuthGuard],
+        canLoad: [AuthGuard],
         loadChildren: () => import('./main/my-job/my-job.module').then(m => m.MyJobModule)
     },
     {

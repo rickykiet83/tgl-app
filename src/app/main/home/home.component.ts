@@ -30,10 +30,6 @@ export class HomeComponent implements OnInit {
                 }))
             )
             .subscribe(res => {
-                // if (res.error) {
-                //     this.store.dispatch(new ActionLogin());
-                // }
-                console.log(res);
                 if (res.id_token) {
                     this.store.dispatch(new LoginWithToken(res.id_token));
                 }

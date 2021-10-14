@@ -9,13 +9,16 @@ export const authReducers = (
         case EAuthActions.LoginWithToken: {
             return {
                 ...state,
-                token: action.payload
+                token: action.payload,
+                authenticatedUser: null,
+                isAuthenticated: false,
             };
         }
         case EAuthActions.LoginWithTokenSuccess: {
             return {
                 ...state,
                 token: null,
+                isAuthenticated: true,
                 authenticatedUser: action.payload
             };
         }
