@@ -1,15 +1,14 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { GetCompanies, GetCompany } from './../../../../../store/actions/company.actions';
 import { Store, select } from '@ngrx/store';
-import { map, switchMap } from 'rxjs/internal/operators';
 import { selectCompanyList, selectSelectedCompany } from './../../../../../store/selectors/company.selectors';
 import { takeUntil, tap } from 'rxjs/operators';
 
 import { CompanyModel } from './../../../../shared/models/company.model';
 import { GetPackages } from './../../../../../store/actions/package.actions';
 import { IAppState } from './../../../../../store/state/app.state';
-import { PackageService } from './../../services/package.service';
 import { Subject } from 'rxjs';
+import { map } from 'rxjs/internal/operators';
 
 @Component({
     selector: 'app-company-list',
@@ -22,9 +21,7 @@ export class CompanyListComponent implements OnInit, OnDestroy {
 
     protected _unsubscribeAll: Subject<any> = new Subject();
 
-    constructor(
-        private store: Store<IAppState>,
-        private packageService: PackageService) {
+    constructor(private store: Store<IAppState>) {
         this.store.dispatch(new GetCompanies());
     }
 
@@ -34,13 +31,13 @@ export class CompanyListComponent implements OnInit, OnDestroy {
             takeUntil(this._unsubscribeAll),
             map(companies => companies.map(c => new CompanyModel(c.id, c.name))),
             tap(companies => this.companies = companies),
-            switchMap(async (companies) => this.store.dispatch(new GetCompany(companies[0].id)))
+            tap((companies) => this.store.dispatch(new GetCompany(companies[0].id)))
         ).subscribe();
 
         this.store.pipe(
             select(selectSelectedCompany),
             takeUntil(this._unsubscribeAll),
-            switchMap(async (company) => this.store.dispatch(new GetPackages(company.id)))
+            tap((company) => this.store.dispatch(new GetPackages(company.id)))
         ).subscribe();
     }
 
