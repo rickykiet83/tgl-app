@@ -7,7 +7,11 @@ export interface IPackageState {
 
 export const initialPackageState: IPackageState = {
     packages: [],
-    filter: {},
+    filter: {
+        mode: 'All',
+        port: 'Senzhen',
+        status: 'All Active',
+    },
     sortBy: {
         sortBy: 'Mode'
     }
