@@ -2,7 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { ICompany } from './../../../shared/interfaces/company.interface';
 import { Injectable } from '@angular/core';
 
-@Injectable()
+@Injectable(
+    { providedIn: 'root' }
+)
 export class CompanyService {
     companies: ICompany[] = [];
     constructor(

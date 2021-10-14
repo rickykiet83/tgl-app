@@ -4,8 +4,8 @@ import { StringBaseModel } from "./base.model";
 
 export class CompanyModel extends StringBaseModel implements ICompany {
 
-    constructor(_id: string, public name: string) {
-        super(_id);
+    constructor(id: string = null, public name: string) {
+        super(id);
     }
     packages: IPackage[];
 }

@@ -4,6 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
+import { CompanyEffects } from './../store/effects/company.effects';
+import { EffectsModule } from '@ngrx/effects';
 import { FakeDbService } from './fake-db/fake-db.service';
 import { FuseModule } from '@fuse/fuse.module';
 import { FuseSharedModule } from '@fuse/shared.module';
@@ -14,7 +16,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { NgModule } from '@angular/core';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreModule } from '@ngrx/store';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { TranslateModule } from '@ngx-translate/core';
+import { appReducers } from './../store/reducers/app.reducers';
+import { environment } from './../environments/environment';
 import { fuseConfig } from './fuse-config';
 
 const appRoutes: Routes = [
@@ -47,6 +54,13 @@ const appRoutes: Routes = [
             delay: 0,
             passThruUnknownUrl: true
         }),
+
+        StoreModule.forRoot(appReducers),
+        EffectsModule.forRoot([
+            CompanyEffects
+        ]),
+        StoreRouterConnectingModule.forRoot({ stateKey: 'router' }),
+        !environment.production ? StoreDevtoolsModule.instrument() : [],
 
         // Material moment date module
         MatMomentDateModule,

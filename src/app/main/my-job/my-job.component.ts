@@ -2,9 +2,11 @@ import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { filter, takeUntil } from 'rxjs/operators';
 
 import { FormControl } from '@angular/forms';
+import { IAppState } from './../../../store/state/app.state';
 import { IPackage } from './../../shared/interfaces/package.interface';
 import { PackageModel } from './../../shared/models/package.model';
 import { PackageService } from './services/package.service';
+import { Store } from '@ngrx/store';
 import { Subject } from 'rxjs/internal/Subject';
 import { fuseAnimations } from '@fuse/animations';
 
@@ -30,7 +32,9 @@ export class MyJobComponent implements OnInit, OnDestroy {
     // Private
     private _unsubscribeAll: Subject<any> = new Subject();
 
-    constructor(private packageService: PackageService) {
+    constructor(
+        private store: Store<IAppState>,
+        private packageService: PackageService) {
         // Set the defaults
         this.searchInput = new FormControl('');
     }
