@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ActivatedRoute } from '@angular/router';
+import { IAppState } from 'store/state';
+import { Store } from '@ngrx/store';
+import { map } from 'rxjs/internal/operators';
+
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
@@ -7,9 +12,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-    constructor() { }
+    constructor(
+        private route: ActivatedRoute,
+        private store: Store<IAppState>,
+    ) { }
 
     ngOnInit(): void {
+        this.route.fragment
+            .pipe(
+                map(fragment => new URLSearchParams(fragment)),
+                map(params => ({
+                    access_token: params.get('access_token'),
+                    id_token: params.get('id_token'),
+                    error: params.get('error'),
+                    error_description: params.get('error_description'),
+                }))
+            )
+            .subscribe(res => {
+                // if (res.error) {
+                //     this.store.dispatch(new ActionLogin());
+                // }
+                console.log(res);
+                // if (res.access_token) {
+                //     this.store.dispatch(new ActionAuthLoginWithToken(res.access_token));
+                // }
+            });
     }
 
 }
