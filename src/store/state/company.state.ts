@@ -5,7 +5,6 @@ export interface ICompanyState {
 }
 
 export const initialCompanyState: ICompanyState = {
-    companies: null,
+    companies: [],
     selectedCompany: null,
 }
-

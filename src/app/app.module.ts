@@ -16,6 +16,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { NgModule } from '@angular/core';
+import { PackageEffects } from './../store/effects/package.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
@@ -57,7 +58,8 @@ const appRoutes: Routes = [
 
         StoreModule.forRoot(appReducers),
         EffectsModule.forRoot([
-            CompanyEffects
+            CompanyEffects,
+            PackageEffects,
         ]),
         StoreRouterConnectingModule.forRoot({ stateKey: 'router' }),
         !environment.production ? StoreDevtoolsModule.instrument() : [],

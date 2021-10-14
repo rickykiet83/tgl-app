@@ -1,14 +1,15 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import { filter, takeUntil } from 'rxjs/operators';
+import { Store, select } from '@ngrx/store';
+import { filter, map, takeUntil } from 'rxjs/operators';
 
 import { FormControl } from '@angular/forms';
 import { IAppState } from './../../../store/state/app.state';
 import { IPackage } from './../../shared/interfaces/package.interface';
 import { PackageModel } from './../../shared/models/package.model';
 import { PackageService } from './services/package.service';
-import { Store } from '@ngrx/store';
 import { Subject } from 'rxjs/internal/Subject';
 import { fuseAnimations } from '@fuse/animations';
+import { selectPackageList } from './../../../store/selectors/package.selectors';
 
 @Component({
     selector: 'app-my-job',
@@ -40,9 +41,11 @@ export class MyJobComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        this.packageService.onPackagesChanged.pipe(
-            takeUntil(this._unsubscribeAll)
-        ).subscribe(packages => this.packages = packages)
+        this.store.pipe(
+            select(selectPackageList),
+            takeUntil(this._unsubscribeAll),
+            map(packages => packages.map(p => new PackageModel(p.id, p)))
+        ).subscribe(packages => this.packages = packages);
     }
 
     ngOnDestroy(): void {

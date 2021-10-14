@@ -6,7 +6,9 @@ import { IPackage } from './../../../shared/interfaces/package.interface';
 import { Injectable } from '@angular/core';
 import { PackageModel } from './../../../shared/models/package.model';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class PackageService {
     private packages: IPackage[] = [];
     private routeParams: Params;
