@@ -2,7 +2,8 @@ import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { filter, takeUntil } from 'rxjs/operators';
 
 import { FormControl } from '@angular/forms';
-import { IPackages } from './../../shared/interfaces/package.interface';
+import { IPackage } from './../../shared/interfaces/package.interface';
+import { PackageModel } from './../../shared/models/package.model';
 import { PackageService } from './services/package.service';
 import { Subject } from 'rxjs/internal/Subject';
 import { fuseAnimations } from '@fuse/animations';
@@ -24,7 +25,7 @@ export class MyJobComponent implements OnInit, OnDestroy {
         { id: 4 },
     ];
 
-    packages: IPackages[] = [];
+    packages: PackageModel[] = [];
 
     // Private
     private _unsubscribeAll: Subject<any> = new Subject();

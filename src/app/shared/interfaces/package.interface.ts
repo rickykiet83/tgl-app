@@ -4,7 +4,7 @@ import { ModeTypes } from "../types/mode.type";
 import { PortTypes } from "../types/port.type";
 import { StatusTypes } from "../types/status.type";
 
-export interface IPackages extends IBaseModel<string> {
+export interface IPackage extends IBaseModel<string> {
     companyId: string; //link to company Id
     name: string;
     mode: ModeTypes;

@@ -11,7 +11,7 @@ export abstract class BaseModel<T> implements IBaseModel<T> {
 }
 
 export class StringBaseModel extends BaseModel<string> {
-    constructor(protected _id?: string) {
+    constructor(protected _id: string = null) {
         super(_id);
     }
 
@@ -21,7 +21,7 @@ export class StringBaseModel extends BaseModel<string> {
 }
 
 export class NumberBaseModel extends BaseModel<number> {
-    constructor(protected _id?: number) {
+    constructor(protected _id: number = null) {
         super(_id);
     }
 

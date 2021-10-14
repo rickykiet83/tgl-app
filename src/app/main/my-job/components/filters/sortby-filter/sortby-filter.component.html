@@ -1,5 +1,5 @@
 <mat-form-field floatLabel="fill">
-    <mat-label>Mode</mat-label>
+    <mat-label>Sort By</mat-label>
     <mat-select [ngModel]="selectedFilter" class="account-selection" placeholder="Filter selection">
         <mat-option *ngFor="let filter of (filters | keys)" [value]="filter.key">
             {{filter.value}}

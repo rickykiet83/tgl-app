@@ -3,7 +3,7 @@ import * as shortId from 'shortid';
 import { addDays, endOfMonth, startOfDay } from 'date-fns';
 
 import { ICompany } from './../shared/interfaces/company.interface';
-import { IPackages } from './../shared/interfaces/package.interface';
+import { IPackage } from './../shared/interfaces/package.interface';
 
 export class CompanyFakeDb {
     public static companies: ICompany[] = [
@@ -21,7 +21,7 @@ export class CompanyFakeDb {
         },
     ];
 
-    public static packages: IPackages[] = [
+    public static packages: IPackage[] = [
         {
             id: shortId.generate(),
             companyId: 'nick-scali',
@@ -61,7 +61,7 @@ export class CompanyFakeDb {
             containers: [shortId.generate().toUpperCase(), shortId.generate().toUpperCase()],
             customerRef: [shortId.generate().toUpperCase(), shortId.generate().toUpperCase(), shortId.generate().toUpperCase()],
             supplier: 'LEADER LEISURE INTERNATIONAL CO., LTD',
-            mode: 'Air',
+            mode: 'Sea',
             status: 'At Origin (Job Added)',
             orderDate: startOfDay(new Date()),
             originPort: 'Registered',
@@ -101,7 +101,7 @@ export class CompanyFakeDb {
             containers: [shortId.generate().toUpperCase()],
             customerRef: [shortId.generate().toUpperCase()],
             supplier: 'SHENZHEN D AND S KINGDOM FURNI',
-            mode: 'Air',
+            mode: 'Transport',
             status: 'At Origin (Job Added)',
             orderDate: startOfDay(new Date()),
             originPort: 'Registered',

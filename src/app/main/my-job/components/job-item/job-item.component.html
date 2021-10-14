@@ -1,10 +1,10 @@
 <mat-card class="mb-16">
     <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="space-between start" fxLayoutGap="16px">
         <!-- Job Detail -->
-        <div fxFlex="60" fxFlex.lt-md="100" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start center"
+        <div fxFlex="55" fxFlex.lt-md="100" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start center"
             fxLayoutGap="8px">
             <div fxFlex="10">
-                <img class="job-img" src="/assets/icons/jobs/u134.png" alt="home">
+                <img class="job-img" [src]="item?.Mode?.icon" alt="home">
             </div>
             <div fxFlex>
                 <p class="mat-title"><span class="underline mr-12 text-uppercase">{{item?.id}}</span>
@@ -31,7 +31,7 @@
             fxLayoutGap="10px">
             <div fxLayout="column" fxLayoutAlign="space-between center">
                 <div>
-                    <img class="job-img" src="/assets/icons/jobs/u133.png" alt="home">
+                    <img class="job-img" src="/assets/icons/jobs/u134.png" alt=" home">
                 </div>
                 <div class="text-bold">
                     <p>Registered</p>
