@@ -34,8 +34,7 @@ const appRoutes: Routes = [
     },
     {
         path: 'my-jobs',
-        // canActivate: [AuthGuard],
-        canLoad: [AuthGuard],
+        canActivate: [AuthGuard],
         loadChildren: () => import('./main/my-job/my-job.module').then(m => m.MyJobModule)
     },
     {

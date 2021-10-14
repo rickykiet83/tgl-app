@@ -1,13 +1,17 @@
 import * as _ from 'lodash';
 
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Store, select } from '@ngrx/store';
+import { filter, map, takeUntil, tap } from 'rxjs/operators';
 
 import { FuseConfigService } from '@fuse/services/config.service';
 import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
+import { IAppState } from 'store/state';
 import { Subject } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
+import { UserModel } from './../../../shared/models/user.model';
+import { authenticatedUser } from 'store/selectors';
 import { navigation } from 'app/navigation/navigation';
-import { takeUntil } from 'rxjs/operators';
 
 @Component({
     selector: 'toolbar',
@@ -24,6 +28,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     navigation: any;
     selectedLanguage: any;
     userStatusOptions: any[];
+    user: UserModel;
 
     // Private
     private _unsubscribeAll: Subject<any>;
@@ -38,7 +43,8 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     constructor(
         private _fuseConfigService: FuseConfigService,
         private _fuseSidebarService: FuseSidebarService,
-        private _translateService: TranslateService
+        private _translateService: TranslateService,
+        private store: Store<IAppState>,
     ) {
         // Set the defaults
         this.userStatusOptions = [
@@ -107,6 +113,15 @@ export class ToolbarComponent implements OnInit, OnDestroy {
 
         // Set the selected language from default languages
         this.selectedLanguage = _.find(this.languages, { id: this._translateService.currentLang });
+
+
+        this.store.pipe(
+            select(authenticatedUser),
+            takeUntil(this._unsubscribeAll),
+            filter(user => !!user),
+            map(user => new UserModel(user.oid, user.given_name, user.family_name, user.name, user.emails)),
+            tap(user => this.user = user)
+        ).subscribe();
     }
 
     /**
@@ -139,6 +154,10 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     search(value): void {
         // Do your search here...
         console.log(value);
+    }
+
+    myProfile() {
+        window.location.href = 'https://tglkiet.b2clogin.com/tglkiet.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1_profile&client_id=471875df-8670-4c2b-ae95-98fc189cb220&nonce=defaultNonce&redirect_uri=http%3A%2F%2Flocalhost%3A4200&scope=openid&response_type=id_token&prompt=login';
     }
 
     /**

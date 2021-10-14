@@ -27,15 +27,15 @@
 
             <button mat-button [matMenuTriggerFor]="userMenu" class="user-button">
                 <div fxLayout="row" fxLayoutAlign="center center">
-                    <img class="avatar mr-0 mr-sm-16" src="assets/images/avatars/Tyson.jpg">
-                    <span class="username mr-12" fxHide fxShow.gt-sm>Kiet Pham</span>
+                    <img class="avatar mr-0 mr-sm-16" src="assets/images/avatars/profile.jpg">
+                    <span class="username mr-12" fxHide fxShow.gt-sm>{{user?.fullName}}</span>
                     <mat-icon class="s-16" fxHide.xs>keyboard_arrow_down</mat-icon>
                 </div>
             </button>
 
             <mat-menu #userMenu="matMenu" [overlapTrigger]="false">
 
-                <button mat-menu-item>
+                <button (click)="myProfile()" mat-menu-item>
                     <mat-icon>account_circle</mat-icon>
                     <span>My Profile</span>
                 </button>
