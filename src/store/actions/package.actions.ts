@@ -1,9 +1,12 @@
+import { IFilterPackage, IPackage } from './../../app/shared/interfaces/package.interface';
+
 import { Action } from '@ngrx/store';
-import { IPackage } from './../../app/shared/interfaces/package.interface';
 
 export enum EPackageActions {
     GetPackages = '[Package] Get Packages',
     GetPackagesSuccess = '[Package] Get Packages Success',
+    FilterPackages = '[Package] Filter Package',
+    PackagesFiltered = '[Package] Packages Filtered',
 }
 
 export class GetPackages implements Action {
@@ -16,5 +19,15 @@ export class GetPackagesSuccess implements Action {
     constructor(public payload: IPackage[]) { }
 }
 
+export class FilterPackages implements Action {
+    public readonly type = EPackageActions.FilterPackages;
+    constructor(public payload: Partial<IFilterPackage>) { }
+}
 
-export type PackageActions = GetPackages | GetPackagesSuccess;
+export class FilteredPackages implements Action {
+    public readonly type = EPackageActions.PackagesFiltered;
+    constructor(public payload: IPackage[]) { }
+}
+
+
+export type PackageActions = GetPackages | GetPackagesSuccess | FilterPackages | FilteredPackages;

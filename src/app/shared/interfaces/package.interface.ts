@@ -18,3 +18,9 @@ export interface IPackage extends IBaseModel<string> {
     containers: string[];
     supplier: string;
 }
+
+export interface IFilterPackage {
+    mode: ModeTypes,
+    status: StatusTypes,
+    port: PortTypes,
+}

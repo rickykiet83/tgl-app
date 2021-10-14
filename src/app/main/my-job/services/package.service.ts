@@ -1,8 +1,8 @@
 import { ActivatedRouteSnapshot, Params, Resolve, RouterStateSnapshot } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { IFilterPackage, IPackage } from './../../../shared/interfaces/package.interface';
 
 import { HttpClient } from '@angular/common/http';
-import { IPackage } from './../../../shared/interfaces/package.interface';
 import { Injectable } from '@angular/core';
 import { PackageModel } from './../../../shared/models/package.model';
 
@@ -53,6 +53,23 @@ export class PackageService {
                     resolve(this.packages);
                 }, reject);
         });
+    }
+
+    filterPackage(filter: Partial<IFilterPackage>): IPackage[] {
+        let packages = this.packages;
+
+        if (!!filter.mode && filter.mode !== 'All')
+            packages = this.packages.filter(p => p.mode === filter.mode.toString());
+
+        if (!!filter.status && filter.status !== 'All Active')
+            packages = this.packages.filter(p => p.status === filter.status);
+
+        if (!!filter.port && filter.port !== 'Registered')
+            packages = this.packages.filter(p => p.originPort === filter.port ||
+                p.destinationPort === filter.port);
+
+
+        return packages;
     }
 
     get Packages(): PackageModel[] {

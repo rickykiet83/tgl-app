@@ -1,8 +1,9 @@
 <mat-form-field floatLabel="fill">
     <mat-label>Status</mat-label>
-    <mat-select [ngModel]="selectedFilter" class="account-selection" placeholder="Filter selection">
-        <mat-option *ngFor="let filter of (filters | keys)" [value]="filter.key">
-            {{filter.value}}
+    <mat-select [(ngModel)]="selectedFilter" (selectionChange)="onFilterChanged($event.value)" class="account-selection"
+        placeholder="Filter selection">
+        <mat-option *ngFor="let filter of (filterList)" [value]="filter">
+            {{filter}}
         </mat-option>
     </mat-select>
 </mat-form-field>
