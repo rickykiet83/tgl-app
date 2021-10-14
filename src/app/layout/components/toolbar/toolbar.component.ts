@@ -2,7 +2,7 @@ import * as _ from 'lodash';
 
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { filter, map, takeUntil, tap } from 'rxjs/operators';
+import { debounceTime, filter, map, takeUntil } from 'rxjs/operators';
 
 import { FuseConfigService } from '@fuse/services/config.service';
 import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
@@ -28,7 +28,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     navigation: any;
     selectedLanguage: any;
     userStatusOptions: any[];
-    user: UserModel;
+    user: UserModel = null;
 
     // Private
     private _unsubscribeAll: Subject<any>;
@@ -92,6 +92,15 @@ export class ToolbarComponent implements OnInit, OnDestroy {
 
         // Set the private defaults
         this._unsubscribeAll = new Subject();
+
+        this.store.pipe(
+            select(authenticatedUser),
+            filter(user => !!user),
+            debounceTime(500),
+            takeUntil(this._unsubscribeAll),
+            map(user => new UserModel(user?.oid, user?.given_name, user?.family_name, user?.name, user?.emails)),
+        ).subscribe(user => this.user = user);
+
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -115,14 +124,10 @@ export class ToolbarComponent implements OnInit, OnDestroy {
         this.selectedLanguage = _.find(this.languages, { id: this._translateService.currentLang });
 
 
-        this.store.pipe(
-            select(authenticatedUser),
-            takeUntil(this._unsubscribeAll),
-            filter(user => !!user),
-            map(user => new UserModel(user.oid, user.given_name, user.family_name, user.name, user.emails)),
-            tap(user => this.user = user)
-        ).subscribe();
+
     }
+
+
 
     /**
      * On destroy

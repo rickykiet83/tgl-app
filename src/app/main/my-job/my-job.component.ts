@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { filter, map, takeUntil } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, filter, map, takeUntil, tap } from 'rxjs/operators';
 
 import { FormControl } from '@angular/forms';
+import { GetPackagesSuccess } from './../../../store/actions/package.actions';
 import { IAppState } from './../../../store/state/app.state';
 import { IPackage } from './../../shared/interfaces/package.interface';
 import { PackageModel } from './../../shared/models/package.model';
@@ -29,13 +30,13 @@ export class MyJobComponent implements OnInit, OnDestroy {
     ];
 
     packages: PackageModel[] = [];
+    private _packages: PackageModel[] = [];
 
     // Private
     private _unsubscribeAll: Subject<any> = new Subject();
 
     constructor(
-        private store: Store<IAppState>,
-        private packageService: PackageService) {
+        private store: Store<IAppState>) {
         // Set the defaults
         this.searchInput = new FormControl('');
     }
@@ -44,8 +45,29 @@ export class MyJobComponent implements OnInit, OnDestroy {
         this.store.pipe(
             select(selectPackageList),
             takeUntil(this._unsubscribeAll),
-            map(packages => packages.map(p => new PackageModel(p.id, p)))
+            map(packages => packages.map(p => new PackageModel(p.id, p))),
+            tap(packages => this._packages = packages)
         ).subscribe(packages => this.packages = packages);
+
+        this.searchInput.valueChanges
+            .pipe(
+                takeUntil(this._unsubscribeAll),
+                debounceTime(300),
+                distinctUntilChanged()
+            )
+            .subscribe(searchText => {
+                this.searchData(searchText);
+            });
+    }
+
+    searchData(keyword: string) {
+        if (keyword && keyword.length > 0) {
+            this.packages = this.packages.filter(p =>
+                p.name.toLowerCase().includes(keyword)
+            );
+        } else {
+            this.packages = this._packages;
+        }
     }
 
     ngOnDestroy(): void {

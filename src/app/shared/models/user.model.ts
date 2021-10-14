@@ -8,10 +8,10 @@ export class UserModel implements IAuthenticatedUser {
 
 
     constructor(id: string, firstName: string, lastName: string, name: string, emails: string[]) {
-        this.oid = id;
-        this.given_name = firstName;
-        this.family_name = lastName;
-        this.name = name;
+        this.oid = id || null;
+        this.given_name = firstName || null;
+        this.family_name = lastName || null;
+        this.name = name || null;
         this.emails = emails || [];
     }
 

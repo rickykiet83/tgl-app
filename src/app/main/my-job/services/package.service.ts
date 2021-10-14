@@ -104,6 +104,17 @@ export class PackageService {
         });
     }
 
+    searchData(keyword: string): IPackage[] {
+        console.log(this.packages);
+
+        const packages = this.packages.filter(p =>
+            p.name.toLowerCase().includes(keyword)
+        );
+
+        console.log(packages);
+        return packages;
+    }
+
     get Packages(): PackageModel[] {
         return this.packages.map(p => new PackageModel(p.id, p));
     }
